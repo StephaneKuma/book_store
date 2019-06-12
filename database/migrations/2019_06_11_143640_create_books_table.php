@@ -28,6 +28,12 @@ class CreateBooksTable extends Migration
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
             $table->string('title');
+            $table->unsignedBigInteger('sub_level_id');
+            $table->foreign('sub_level_id')
+                ->references('id')
+                ->on('sub_levels')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->string('image');
             $table->float('price');
             $table->text('description');
@@ -46,6 +52,7 @@ class CreateBooksTable extends Migration
             $table->dropForeign([
                 'user_id',
                 'sub_category_id',
+                'sub_level_id',
             ]);
         });
         Schema::dropIfExists('books');

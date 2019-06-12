@@ -6,12 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class BookCategory extends Model
 {
-    protected $fillable = ['name', 'sub_level_id'];
-
-    public function sub_level()
-    {
-        return $this->belongsTo(SubLevel::class);
-    }
+    protected $fillable = ['name'];
 
     public function sub_categories()
     {

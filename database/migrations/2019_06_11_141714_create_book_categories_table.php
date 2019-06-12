@@ -15,12 +15,6 @@ class CreateBookCategoriesTable extends Migration
     {
         Schema::create('book_categories', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('sub_level_id');
-            $table->foreign('sub_level_id')
-                ->references('id')
-                ->on('sub_levels')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
             $table->string('name');
             $table->timestamps();
         });
@@ -33,9 +27,6 @@ class CreateBookCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::table('book_categories', function (Blueprint $table) {
-            $table->dropForeign(['sub_level_id']);
-        });
         Schema::dropIfExists('book_categories');
     }
 }

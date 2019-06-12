@@ -13,8 +13,8 @@ class Level extends Model
         return $this->hasMany(SubLevel::class);
     }
 
-    public function categories()
+    public function books()
     {
-        return $this->hasManyThrough(BookCategory::class, SubLevel::class);
+        return $this->hasManyThrough(Book::class, SubLevel::class);
     }
 }

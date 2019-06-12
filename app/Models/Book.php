@@ -18,4 +18,9 @@ class Book extends Model
     {
         return $this->belongsTo(BookSubCategory::class);
     }
+
+    public function sub_level()
+    {
+        return $this->belongsTo(SubLevel::class);
+    }
 }

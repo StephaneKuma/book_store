@@ -44,9 +44,9 @@ class BookController extends Controller
     public function index()
     {
         $levels = $this->levelRepository->getAll();
-        $categories = $this->categoryRepository->getAll();
-        $books = $this->bookRepository->getAll();
-        return view('index', compact('levels', 'categories', 'books'));
+        $books = $this->bookRepository->getPaginated(8);
+        $links = $books->render();
+        return view('books.index', compact('levels', 'books', 'links'));
     }
 
     /**
@@ -78,7 +78,9 @@ class BookController extends Controller
      */
     public function show($id)
     {
-        //
+        $levels = $this->levelRepository->getAll();
+        $book = $this->bookRepository->getById($id);
+        return view('books.show', compact('levels', 'book'));
     }
 
     /**

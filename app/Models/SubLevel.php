@@ -13,13 +13,8 @@ class SubLevel extends Model
         return $this->belongsTo(Level::class);
     }
 
-    public function categories()
+    public function books()
     {
-        return $this->hasMany(BookCategory::class);
-    }
-
-    public function sub_categories()
-    {
-        return $this->hasManyThrough(BookSubCategory::class, BookCategory::class);
+        return $this->hasMany(Book::class);
     }
 }
