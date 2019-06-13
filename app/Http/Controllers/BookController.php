@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Repositories\BookCategoryRepository;
 use App\Repositories\BookRepository;
 use App\Repositories\LevelRepository;
+use App\Repositories\SubLevelRepository;
 use Illuminate\Http\Request;
 
 class BookController extends Controller
@@ -21,19 +22,25 @@ class BookController extends Controller
      * @var LevelRepository
      */
     private $levelRepository;
+    /**
+     * @var SubLevelRepository
+     */
+    private $subLevelRepository;
 
     /**
      * BookController constructor.
      * @param BookRepository $bookRepository
      * @param BookCategoryRepository $categoryRepository
      * @param LevelRepository $levelRepository
+     * @param SubLevelRepository $subLevelRepository
      */
     public function __construct(BookRepository $bookRepository, BookCategoryRepository $categoryRepository,
-        LevelRepository $levelRepository)
+        LevelRepository $levelRepository, SubLevelRepository $subLevelRepository)
     {
         $this->bookRepository = $bookRepository;
         $this->categoryRepository = $categoryRepository;
         $this->levelRepository = $levelRepository;
+        $this->subLevelRepository = $subLevelRepository;
     }
 
     /**
@@ -115,5 +122,15 @@ class BookController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function search_by_sub_level(string $level, string $sub_level)
+    {
+        $levels = $this->levelRepository->getAll();
+        $subLevel = $this->subLevelRepository->getByName($sub_level);
+
+        $books = $subLevel[0]->books;
+        $links = null;
+        return view('books.index', compact('levels', 'books', 'links'));
     }
 }

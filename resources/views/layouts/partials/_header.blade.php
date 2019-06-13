@@ -20,7 +20,7 @@
 @foreach($levels as $level)
     <ul id="{{ __('dropdown') . $level->id }}" class="dropdown-content">
         @foreach($level->sub_levels as $sub_level)
-            <li><a href="">{{ $sub_level->name }}</a></li>
+            <li><a href="{{ url("/books/" . $level->name . "/" . $sub_level->name) }}">{{ $sub_level->name }}</a></li>
             <li class="divider"></li>
         @endforeach
     </ul>

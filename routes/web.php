@@ -15,6 +15,8 @@ Route::get('/', 'BookController@index')->name('index');
 
 Route::resource('books', 'BookController');
 
+Route::get('books/{level}/{sub_level}', 'BookController@search_by_sub_level');
+
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
