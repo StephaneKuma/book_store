@@ -13,13 +13,13 @@
             </div>
         </div>
         <div class="row container">
-            <form action="{{ route("books.store") }}" method="post">
+            <form action="{{ route("book.store") }}" method="post">
                 @csrf
                 <div class="row">
                     <div class="col s6 input-field">
-                        <input id="title" type="text" class="{{ $errors->has('title') ? ' invalid' : ' validate' }}" name="title" value="{{ old('title') }}" required autofocus>
+                        <input id="title" type="text" data-length="30" class="{{ $errors->has('title') ? ' invalid' : ' validate' }}" name="title" value="{{ old('title') }}" required autofocus>
                         <label for="title" class="">{{ __('Titre') }}</label>
-                        <span class="helper-text" data-error="{{ $errors->has('title') ? $errors->first('title') : "Oups ! Ce champ ne peut-être vide" }}" data-success="Bien"></span>
+                        <span class="helper-text" data-error="{{ $errors->has('title') ? $errors->first('title') : "Oups ! Ce champ ne peut-être vide ou dépasser la longueur maximale de 30 caractères" }}" data-success="Bien"></span>
                     </div>
                     <div class="col s6 input-field">
                         <select>

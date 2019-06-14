@@ -13,9 +13,9 @@
 
 Route::get('/', 'BookController@index')->name('index');
 
-Route::resource('books', 'BookController');
+Route::resource('book', 'BookController');
 
-Route::get('books/{level}/{sub_level}', 'BookController@search_by_sub_level');
+Route::get('book/{level}/{sub_level}', 'BookController@search_by_sub_level');
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
@@ -24,5 +24,7 @@ Route::group(['prefix' => 'admin'], function () {
 Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('user/{id}', 'ProfileController@index')->name('profile.index');
 
 Route::get('/confirm/{id}/{token}', 'Auth\RegisterController@confirm');

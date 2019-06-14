@@ -45,7 +45,7 @@
                     <div class="row">
                         <div class="col s4 push-s4 input-field">
                             <button class="btn waves-effect waves-light green" type="submit" name="action"> {{ __("S'inscrire") }}
-                                <i class="material-icons right">send</i>
+                                <i class="material-icons left">mode_edit</i>
                             </button>
                         </div>
                     </div>

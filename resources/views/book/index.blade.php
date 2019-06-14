@@ -9,13 +9,13 @@
                         <div class="card-image">
                             <img src="{{ asset("storage/" . $book->image) }}">
                             <span class="card-title black-text">{{ $book->title }}</span>
-                            <a class="btn-floating halfway-fab waves-effect waves-light red" href="{{ route('books.show', $book->id) }}">
+                            <a class="btn-floating halfway-fab waves-effect waves-light red" href="{{ route('book.show', $book->id) }}">
                                 <i class="material-icons medium">info</i>
                             </a>
                         </div>
                         <div class="card-content">
                             <p>Niveau : {{ $book->sub_level->name }}</p>
-                            <p>Prix : {{ $book->price . __('F CFA') }}</p>
+                            <p>Prix : {{ $book->price . __(' F CFA') }}</p>
                             <p class="truncate">{{ $book->description }}</p>
                         </div>
                     </div>

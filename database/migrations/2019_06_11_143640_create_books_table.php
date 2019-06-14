@@ -13,7 +13,7 @@ class CreateBooksTable extends Migration
      */
     public function up()
     {
-        Schema::create('books', function (Blueprint $table) {
+        Schema::create('book', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')
@@ -48,13 +48,13 @@ class CreateBooksTable extends Migration
      */
     public function down()
     {
-        Schema::table('books', function (Blueprint $table) {
+        Schema::table('book', function (Blueprint $table) {
             $table->dropForeign([
                 'user_id',
                 'sub_category_id',
                 'sub_level_id',
             ]);
         });
-        Schema::dropIfExists('books');
+        Schema::dropIfExists('book');
     }
 }

@@ -14,7 +14,7 @@
                 </li>
             @endforeach
             <li>
-                <a href="{{ route("books.create") }}">
+                <a href="{{ route("book.create") }}">
                     <i class="material-icons left">add</i>
                     Déposer une annonce
                 </a>
@@ -27,7 +27,7 @@
 
                     <ul id="user-drop" class="dropdown-content">
                         <li>
-                            <a href="{{-- route('profile.index') --}}">
+                            <a href="{{ route('profile.index', Auth::user()->id) }}">
                                 <i class="material-icons left">dashboard</i>
                                 Tableau de bord</a></li>
                         <li>
@@ -64,7 +64,7 @@
 @foreach($levels as $level)
     <ul id="{{ __('dropdown') . $level->id }}" class="dropdown-content">
         @foreach($level->sub_levels as $sub_level)
-            <li><a href="{{ url("/books/" . $level->name . "/" . $sub_level->name) }}">{{ $sub_level->name }}</a></li>
+            <li><a href="{{ url("book/" . $level->name . "/" . $sub_level->name) }}">{{ $sub_level->name }}</a></li>
             <li class="divider"></li>
         @endforeach
     </ul>

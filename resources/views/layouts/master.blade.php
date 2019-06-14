@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>{{ $title . " - Book Store" or "Book Store" }}</title>
+    <title>{{ $title . " - Book Shop" ?? "Book Shop" }}</title>
     <link rel="stylesheet" href="{{ asset('css/materialize.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/material-icons.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">

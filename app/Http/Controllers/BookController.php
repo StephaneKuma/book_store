@@ -43,7 +43,7 @@ class BookController extends Controller
     public function __construct(BookRepository $bookRepository, BookCategoryRepository $categoryRepository,
         LevelRepository $levelRepository, SubLevelRepository $subLevelRepository, BookSubCategoryRepository $subCategoryRepository)
     {
-        $this->middleware('auth')->except('index');
+        $this->middleware('auth')->except('index', 'show');
         $this->bookRepository = $bookRepository;
         $this->categoryRepository = $categoryRepository;
         $this->levelRepository = $levelRepository;
@@ -61,7 +61,7 @@ class BookController extends Controller
         $levels = $this->levelRepository->getAll();
         $books = $this->bookRepository->getPaginated(8);
         $links = $books->render();
-        return view('books.index', compact('levels', 'books', 'links'));
+        return view('book.index', compact('levels', 'books', 'links'));
     }
 
     /**
@@ -75,7 +75,7 @@ class BookController extends Controller
         $sub_levels = $this->subLevelRepository->getAll();
         $categories = $this->categoryRepository->getAll();
         $sub_categories = $this->subCategoryRepository->getAll();
-        return view('books.create', compact('levels', 'categories', 'sub_categories', 'sub_levels'));
+        return view('book.create', compact('levels', 'categories', 'sub_categories', 'sub_levels'));
     }
 
     /**
@@ -99,7 +99,7 @@ class BookController extends Controller
     {
         $levels = $this->levelRepository->getAll();
         $book = $this->bookRepository->getById($id);
-        return view('books.show', compact('levels', 'book'));
+        return view('book.show', compact('levels', 'book'));
     }
 
     /**
@@ -143,6 +143,6 @@ class BookController extends Controller
 
         $books = $subLevel[0]->books;
         $links = null;
-        return view('books.index', compact('levels', 'books', 'links'));
+        return view('book.index', compact('levels', 'books', 'links'));
     }
 }

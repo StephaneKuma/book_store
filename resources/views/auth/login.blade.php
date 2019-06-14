@@ -37,12 +37,13 @@
                     <div class="row">
                         <div class="col s6 input-field">
                             <button class="btn waves-effect waves-light green" type="submit" name="action"> {{ __("Se connecter") }}
-                                <i class="material-icons right">send</i>
+                                <i class="material-icons left">input</i>
                             </button>
                         </div>
                         @if(Route::has('password.request'))
                             <div class="col s6 input-field">
                                 <a class="btn orange" href="{{ route('password.request') }}">
+                                    <i class="material-icons left">build</i>
                                     {{ __('Mot de passe oublié ?') }}
                                 </a>
                             </div>
