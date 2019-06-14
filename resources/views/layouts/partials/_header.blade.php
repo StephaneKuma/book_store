@@ -29,13 +29,24 @@
                         <li>
                             <a href="{{ route('profile.index', Auth::user()->id) }}">
                                 <i class="material-icons left">dashboard</i>
-                                Tableau de bord</a></li>
+                                Tableau de bord
+                            </a>
+                        </li>
+                        <li class="divider"></li>
                         <li>
                             <a href="{{-- route('profile.index') --}}">
                                 <i class="material-icons left">home</i>
                                 Accueil
                             </a>
                         </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="{{-- route('profile.index') --}}">
+                                <i class="material-icons left">settings_applications</i>
+                                Paramètres
+                            </a>
+                        </li>
+                        <li class="divider"></li>
                         <li>
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
