@@ -1,7 +1,7 @@
 @extends("layouts.master", ["title" => "Accueil"])
 
 @section('content')
-    <div class="section">
+    <div class="section" style="min-height: 81vh;">
         <div class="row container">
             @foreach($books as $book)
                 <div class="col s12 m3">

@@ -1,7 +1,7 @@
 @extends("layouts.master", ["title" => "Tableau de bord"])
 
 @section('content')
-    <div class="section">
+    <div class="section" style="min-height: 81vh">
         <div class="row">
             <div class="col s12 m3">
                 @include("shared._sidebar")
@@ -22,7 +22,7 @@
                     </div>
                     <div class="card col s12 m6 hoverable">
                         <div class="card-image">
-                            <img src="{{ asset('storage/messages/default.png') }}" style="height: 229px">
+                            <img src="{{ asset('storage/messages/default.png') }}" style="height: 226px">
                             <span class="card-title red-text">Card Title</span>
                         </div>
                         <div class="card-content indigo lighten-4">

@@ -7,6 +7,14 @@
     </li>
     <li>
         <div class="collapsible-header">
+            <a href="{{ route('profile.index', Auth::user()->id) }}" class="black-text">
+                <i class="material-icons left">dashboard</i>
+                Tableau de bord
+            </a>
+        </div>
+    </li>
+    <li>
+        <div class="collapsible-header">
             <a href="{{ route('profile.show_books', $user->id) }}" class="tooltipped black-text" data-position="right" data-tooltip="Voir mes annonces">
                 <i class="material-icons left">book</i>
                 Livres

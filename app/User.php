@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Models\Book;
+use App\Models\Message;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -41,5 +42,10 @@ class User extends \TCG\Voyager\Models\User
     public function books()
     {
         return $this->hasMany(Book::class);
+    }
+
+    public function messages()
+    {
+        return $this->hasMany(Message::class);
     }
 }
