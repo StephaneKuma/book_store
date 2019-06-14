@@ -21,6 +21,8 @@ Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/confirm/{id}/{token}', 'Auth\RegisterController@confirm');

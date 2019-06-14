@@ -56,7 +56,7 @@
         });
 
         $(document).ready(function() {
-            $('input#input_text, textarea#textarea1').characterCounter();
+            $('input#title, textarea#description, textarea#textarea1').characterCounter();
         });
     </script>
 

@@ -13,6 +13,50 @@
                     </a>
                 </li>
             @endforeach
+            <li>
+                <a href="{{ route("books.create") }}">
+                    <i class="material-icons left">add</i>
+                    Déposer une annonce
+                </a>
+            </li>
+            @auth
+                <li>
+                    <a data-target="user-drop" class="dropdown-trigger" href="">
+                        <img src="{{ asset('storage/' . Auth::user()->avatar) }}" alt="" class="responsive-img circle center" style="height: 2.5rem; padding-top: 1rem">
+                    </a>
+
+                    <ul id="user-drop" class="dropdown-content">
+                        <li>
+                            <a href="{{-- route('profile.index') --}}">
+                                <i class="material-icons left">dashboard</i>
+                                Tableau de bord</a></li>
+                        <li>
+                            <a href="{{-- route('profile.index') --}}">
+                                <i class="material-icons left">home</i>
+                                Accueil
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
+                                             document.getElementById('logout-form').submit();">
+                                <i class="material-icons left">power_settings_new</i>
+                                {{ __('Déconnection') }}
+                            </a>
+                        </li>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    </ul>
+                </li>
+            @endauth
+            @guest
+                <li>
+                    <a class="btn waves-effect deep-orange tooltipped" data-tooltip="Voir votre profile" href="{{route('login')}}">
+                        <i class="material-icons left">input</i>
+                        {{ __("Se connecter") }}</a>
+                </li>
+            @endguest
         </ul>
     </div>
 </nav>

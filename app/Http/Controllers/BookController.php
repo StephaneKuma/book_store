@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Repositories\BookCategoryRepository;
 use App\Repositories\BookRepository;
+use App\Repositories\BookSubCategoryRepository;
 use App\Repositories\LevelRepository;
 use App\Repositories\SubLevelRepository;
 use Illuminate\Http\Request;
@@ -26,6 +27,10 @@ class BookController extends Controller
      * @var SubLevelRepository
      */
     private $subLevelRepository;
+    /**
+     * @var BookSubCategoryRepository
+     */
+    private $subCategoryRepository;
 
     /**
      * BookController constructor.
@@ -33,14 +38,17 @@ class BookController extends Controller
      * @param BookCategoryRepository $categoryRepository
      * @param LevelRepository $levelRepository
      * @param SubLevelRepository $subLevelRepository
+     * @param BookSubCategoryRepository $subCategoryRepository
      */
     public function __construct(BookRepository $bookRepository, BookCategoryRepository $categoryRepository,
-        LevelRepository $levelRepository, SubLevelRepository $subLevelRepository)
+        LevelRepository $levelRepository, SubLevelRepository $subLevelRepository, BookSubCategoryRepository $subCategoryRepository)
     {
+        $this->middleware('auth')->except('index');
         $this->bookRepository = $bookRepository;
         $this->categoryRepository = $categoryRepository;
         $this->levelRepository = $levelRepository;
         $this->subLevelRepository = $subLevelRepository;
+        $this->subCategoryRepository = $subCategoryRepository;
     }
 
     /**
@@ -63,7 +71,11 @@ class BookController extends Controller
      */
     public function create()
     {
-        //
+        $levels = $this->levelRepository->getAll();
+        $sub_levels = $this->subLevelRepository->getAll();
+        $categories = $this->categoryRepository->getAll();
+        $sub_categories = $this->subCategoryRepository->getAll();
+        return view('books.create', compact('levels', 'categories', 'sub_categories', 'sub_levels'));
     }
 
     /**
