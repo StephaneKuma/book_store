@@ -43,7 +43,7 @@ class BookController extends Controller
     public function __construct(BookRepository $bookRepository, BookCategoryRepository $categoryRepository,
         LevelRepository $levelRepository, SubLevelRepository $subLevelRepository, BookSubCategoryRepository $subCategoryRepository)
     {
-        $this->middleware('auth')->except('index', 'show');
+        $this->middleware('auth')->except('index', 'show', 'search_by_sub_level');
         $this->bookRepository = $bookRepository;
         $this->categoryRepository = $categoryRepository;
         $this->levelRepository = $levelRepository;

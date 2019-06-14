@@ -1,4 +1,4 @@
-@extends("layouts.master", ["title" => "Home"])
+@extends("layouts.master", ["title" => "Accueil"])
 
 @section('content')
     <div class="section">

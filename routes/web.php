@@ -27,4 +27,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('user/{id}', 'ProfileController@index')->name('profile.index');
 
+Route::get('user/{id}/books', 'ProfileController@show_books')->name('profile.show_books');
+
+Route::get('user/{userId}/book/{bookId}', 'ProfileController@show_book')->name('profile.show_book');
+
 Route::get('/confirm/{id}/{token}', 'Auth\RegisterController@confirm');

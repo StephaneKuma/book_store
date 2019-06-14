@@ -34,7 +34,7 @@
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="{{-- route('profile.index') --}}">
+                            <a href="{{ route('index') }}">
                                 <i class="material-icons left">home</i>
                                 Accueil
                             </a>
